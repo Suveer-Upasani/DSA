@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/suveer/Java_Test/sorting/output/insertion_sort'
+relocations:     []
+...

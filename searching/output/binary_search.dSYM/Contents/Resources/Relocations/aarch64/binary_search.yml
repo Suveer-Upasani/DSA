@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/suveer/Java_Test/searching/output/binary_search'
+relocations:     []
+...
