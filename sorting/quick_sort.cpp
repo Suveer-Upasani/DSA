@@ -1,44 +1,50 @@
 #include <iostream>
 using namespace std;
-
-int partition(int a[], int low, int high)
+void quick(int a[], int s, int e)
 {
-    int pivot = a[high];
-    int i = low - 1;
-    for (int j = low; j < high; j++)
+    if (s >= e)
     {
-        if (a[j] <= pivot)
+        return;
+    }
+
+    int pivot = a[e];
+    int pIndex = s;
+
+    for (int i = s; i < e; i++)
+    {
+        if (a[i] <= pivot)
         {
-            i++;
-            swap(a[i], a[j]);
+            swap(a[i], a[pIndex]);
+            pIndex++;
         }
     }
-    swap(a[i + 1], a[high]);
-    return i + 1;
-}
+    swap(a[pIndex], a[e]);
 
-void quickSort(int a[], int low, int high)
-{
-    if (low < high)
-    {
-        int pi = partition(a, low, high);
-        quickSort(a, low, pi - 1);
-        quickSort(a, pi + 1, high);
-    }
+    quick(a, s, pIndex - 1);
+    quick(a, pIndex + 1, e);
 }
-
 int main()
 {
     int n;
-    cout << "Enter size of array: ";
+    cout << "Enter Size of array: ";
     cin >> n;
-    int a[n];
+
+    int *a = new int[n];
     cout << "Enter elements: ";
     for (int i = 0; i < n; i++)
+    {
         cin >> a[i];
-    quickSort(a, 0, n - 1);
-    cout << "Sorted array: ";
+    }
+
+    quick(a, 0, n - 1);
+
+    cout << "Sorted array is: ";
     for (int i = 0; i < n; i++)
+    {
         cout << a[i] << " ";
+    }
+    cout << endl;
+
+    delete[] a;
     return 0;
 }
